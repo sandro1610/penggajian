@@ -32,7 +32,7 @@ if(isset($_POST["submit"])){
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="assets/img/icon.png">
-    <title>PT MAHAPUTRA KARYA</title>
+    <title>STIE APRIN PALEMBANG</title>
     <!-- Bootstrap core CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/login.css" rel="stylesheet">

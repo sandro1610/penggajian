@@ -9,7 +9,7 @@ if (empty($_SESSION['email']) && empty($_SESSION['password']) && empty($_SESSION
 <html lang="en">
 
 <head>
-  <title>PT MAHAPUTRA KARYA</title>
+  <title>STIE APRIN PALEMBANG</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <!-- Favicon -->
