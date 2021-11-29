@@ -13,7 +13,7 @@ if (empty($_SESSION['email']) && empty($_SESSION['password']) && empty($_SESSION
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <!-- Favicon -->
-  <link rel="icon" href="../assets/img/icon.png" type="image/png">
+  <link rel="icon" href="../assets/img/logo.png" type="image/png">
   <!-- Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
   <!-- Page plugins -->
@@ -33,8 +33,9 @@ if (empty($_SESSION['email']) && empty($_SESSION['password']) && empty($_SESSION
         <span class="navbar-toggler-icon"></span>
       </button>
       <!-- Brand -->
-      <a class="navbar-brand pt-0" href="#">
-        <img src="../assets/img/logo.jpeg" class="navbar-brand-img">
+      <a class="navbar-brand pt-0" href="index.php">
+        <img src="../assets/img/logo.png" width="50" height="50" class="navbar-brand-img">
+        <p>STIE APRIN</p>
       </a>
       <!-- Collapse -->
       <div class="collapse navbar-collapse" id="sidenav-collapse-main">
@@ -43,7 +44,7 @@ if (empty($_SESSION['email']) && empty($_SESSION['password']) && empty($_SESSION
           <div class="row">
             <div class="col-6 collapse-brand">
               <a href="">
-                <img src="../assets/img/logo.jpeg">
+                <img src="../assets/img/logo.png">
               </a>
             </div>
             <div class="col-6 collapse-close">
@@ -145,9 +146,9 @@ if (empty($_SESSION['email']) && empty($_SESSION['password']) && empty($_SESSION
     });
   </script>
   <script language="JavaScript" type="text/javascript">
-    function hapusData_mahasiswa(id) {
+    function hapusData_izin(id) {
       if (confirm("Apakah anda yakin akan menghapus data ini?")) {
-        window.location.href = 'index.php?q=mahasiswa&p=delete&id=' + id;
+        window.location.href = 'index.php?q=izin&p=delete&id=' + id;
       }
     }
 
@@ -157,29 +158,15 @@ if (empty($_SESSION['email']) && empty($_SESSION['password']) && empty($_SESSION
       }
     }
 
-    function hapusData_video(id) {
+    function hapusData_absen(id) {
       if (confirm("Apakah anda yakin akan menghapus data ini?")) {
-        window.location.href = 'index.php?q=video&p=delete&id=' + id;
+        window.location.href = 'index.php?q=absen&p=delete&id=' + id;
       }
     }
 
-    function hapusData_user(id) {
+    function hapusData_gaji(id) {
       if (confirm("Apakah anda yakin akan menghapus data ini?")) {
-        window.location.href = 'index.php?q=user&p=delete&id=' + id;
-      }
-    }
-  </script>
-
-  <script>
-    function aktif(v_key) {
-      if (confirm("Apakah anda yakin UMKM ini Aktif?")) {
-        window.location.href = 'includes/approve.php?v_key=' + v_key;
-      }
-    }
-
-    function tidak_aktif(v_key) {
-      if (confirm("Apakah anda yakin UMKM ini Tidak Aktif?")) {
-        window.location.href = 'includes/reject.php?v_key=' + v_key;
+        window.location.href = 'index.php?q=gaji&p=delete&id=' + id;
       }
     }
   </script>

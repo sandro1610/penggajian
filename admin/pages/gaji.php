@@ -17,9 +17,10 @@
                                 <th>No Rekening</th>
                                 <th>Pinjaman</th>
                                 <th>Iuran</th>
-                                <th>Makan</th>
+                                <th>Tunjangan Jabatan</th>
                                 <th>Transport</th>
-                                <th>Operasional</th>
+                                <th>Honor Ngajar</th>
+                                <th>Honor Lainnya</th>
                                 <th>Total Gaji</th>
                                 <th>Gaji Bersih</th>
                                 <th>Action</th>
@@ -88,9 +89,9 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
-                                                                        <label for="nama" class="col-sm-2 col-form-label">Makan</label>
+                                                                        <label for="nama" class="col-sm-2 col-form-label">Tunjangan Jabatan</label>
                                                                         <div class="col-sm-10">
-                                                                            <input type="text" disabled value="<?= $hasil['makan']; ?>" class="form-control" id="nama">
+                                                                            <input type="text" disabled value="<?= $hasil['tunjangan_jabatan']; ?>" class="form-control" id="nama">
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
@@ -100,9 +101,15 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
-                                                                        <label for="nama" class="col-sm-2 col-form-label">Operasional</label>
+                                                                        <label for="nama" class="col-sm-2 col-form-label">Honor Ngajar</label>
                                                                         <div class="col-sm-10">
-                                                                            <input type="text" disabled value="<?= $hasil['operasional']; ?>" class="form-control" id="nama">
+                                                                            <input type="text" disabled value="<?= $hasil['honor_ngajar']; ?>" class="form-control" id="nama">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="nama" class="col-sm-2 col-form-label">Honor Lainnya</label>
+                                                                        <div class="col-sm-10">
+                                                                            <input type="text" disabled value="<?= $hasil['honor_lainnya']; ?>" class="form-control" id="nama">
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
@@ -115,7 +122,7 @@
                                                                         <label for="nama" class="col-sm-2 col-form-label">Gaji Bersih</label>
                                                                         <div class="col-sm-10">
                                                                             <input type="text" disabled value="<?php
-                                                                                                                $total_bersih = ($hasil['total_gaji'] + $hasil['makan'] + $hasil['makan'] + $hasil['transport']) - ($hasil['pinjaman'] + $hasil['iuran']);
+                                                                                                                $total_bersih = ($hasil['total_gaji'] + $hasil['tunjangan_jabatan'] + $hasil['tunjangan_jabatan'] + $hasil['transport']) - ($hasil['pinjaman'] + $hasil['iuran']);
                                                                                                                 echo $total_bersih; ?>" class="form-control" id="nama">
                                                                         </div>
                                                                     </div>
@@ -133,12 +140,13 @@
                                     <td><?= $hasil['no_rek']; ?></td>
                                     <td><?= $hasil['pinjaman']; ?></td>
                                     <td><?= $hasil['iuran']; ?></td>
-                                    <td><?= $hasil['makan']; ?></td>
+                                    <td><?= $hasil['tunjangan_jabatan']; ?></td>
                                     <td><?= $hasil['transport']; ?></td>
-                                    <td><?= $hasil['operasional']; ?></td>
+                                    <td><?= $hasil['honor_ngajar']; ?></td>
+                                    <td><?= $hasil['honor_lainnya']; ?></td>
                                     <td><?= $hasil['total_gaji']; ?></td>
                                     <td><?php
-                                        $total_bersih = ($hasil['total_gaji'] + $hasil['makan'] + $hasil['operasional'] + $hasil['transport']) - ($hasil['pinjaman'] + $hasil['iuran']);
+                                        $total_bersih = ($hasil['total_gaji'] + $hasil['tunjangan_jabatan'] + $hasil['honor_ngajar'] + $hasil['honor_lainnya'] + $hasil['transport']) - ($hasil['pinjaman'] + $hasil['iuran']);
                                         echo $total_bersih; ?></td>
                                     <td>
                                         <a class="btn btn-sm btn-warning" data-toggle="modal" data-target="#modal-form-<?php echo $hasil['id_gaji']; ?>">
@@ -172,9 +180,9 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
-                                                                        <label for="nama" class="col-sm-2 col-form-label">Makan</label>
+                                                                        <label for="nama" class="col-sm-2 col-form-label">Tunjangan Jabatan</label>
                                                                         <div class="col-sm-10">
-                                                                            <input type="text" name="makan" value="<?= $hasil['makan']; ?>" class="form-control" id="nama">
+                                                                            <input type="text" name="tunjangan_jabatan" value="<?= $hasil['tunjangan_jabatan']; ?>" class="form-control" id="nama">
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
@@ -184,9 +192,15 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
-                                                                        <label for="nama" class="col-sm-2 col-form-label">Operasional</label>
+                                                                        <label for="nama" class="col-sm-2 col-form-label">Honor Ngajar</label>
                                                                         <div class="col-sm-10">
-                                                                            <input type="text" name="operasional" value="<?= $hasil['operasional']; ?>" class="form-control" id="nama">
+                                                                            <input type="text" name="honor_ngajar" value="<?= $hasil['honor_ngajar']; ?>" class="form-control" id="nama">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="nama" class="col-sm-2 col-form-label">Honor Lainnya</label>
+                                                                        <div class="col-sm-10">
+                                                                            <input type="text" name="honor_lainnya" value="<?= $hasil['honor_lainnya']; ?>" class="form-control" id="nama">
                                                                         </div>
                                                                     </div>
                                                                     <center><button type="submit" name="edit_gaji" class="btn btn-primary">Edit</button></center>
@@ -197,7 +211,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <a class="btn btn-sm btn-danger" href="javascript:hapusData_siswa('<?= $hasil['id_gaji']; ?>')">
+                                        <a class="btn btn-sm btn-danger" href="javascript:hapusData_gaji('<?= $hasil['id_gaji']; ?>')">
                                             <i class='fas fa-trash' style="color: white;"></i>
                                         </a>
                                     </td>

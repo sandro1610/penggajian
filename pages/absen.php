@@ -8,7 +8,6 @@
                     <tr>
                         <th scope="col">Tanggal</th>
                         <th scope="col">Hadir</th>
-                        <th scope="col">Pulang</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -24,7 +23,6 @@
                         <tr>
                             <td><?= $hasil['tanggal']; ?></td>
                             <td><?= $hasil['datang']; ?></td>
-                            <td><?= $hasil['pulang']; ?></td>
                         </tr>
                     <?php endwhile; ?>
                 </tbody>

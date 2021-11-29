@@ -35,10 +35,8 @@
                         <button type="submit" name="absen" class="btn btn-lg btn-primary">Absen</button>
                     <?php
                     } else if ($hasil['status'] == '0') { ?>
-                        <button type="submit" name="pulang" class="btn btn-lg btn-secondary">Pulang</button>
-                    <?php } else if ($hasil['status'] == '1') {?>
                         <h3>Sampai Ketemu Besok :)</h3>
-                        <?php } ?>
+                    <?php } ?>
                 </form>
             </center>
         </div>

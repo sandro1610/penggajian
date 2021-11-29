@@ -28,7 +28,7 @@
                                 <th>Jabatan</th>
                                 <th>Alamat</th>
                                 <th>Tanggal Masuk</th>
-                                <th>Gaji Per Jam</th>
+                                <th>Gaji</th>
                                 <th>Level</th>
                                 <th>Action</th>
                             </tr>
@@ -96,9 +96,9 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
-                                                                        <label for="gaji_perjam" class="col-sm-2 col-form-label">Gaji Perjam</label>
+                                                                        <label for="gaji_karyawan" class="col-sm-2 col-form-label">Gaji</label>
                                                                         <div class="col-sm-10">
-                                                                            <input type="email" disabled value="<?= $hasil['gaji_perjam']; ?>" class="form-control" id="gaji_perjam">
+                                                                            <input type="email" disabled value="<?= $hasil['gaji']; ?>" class="form-control" id="gaji_karyawan">
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
@@ -122,7 +122,7 @@
                                     <td><?= $hasil['jabatan']; ?></td>
                                     <td><?= $hasil['alamat']; ?></td>
                                     <td><?= $hasil['tgl_masuk']; ?></td>
-                                    <td><?= $hasil['gaji_perjam']; ?></td>
+                                    <td><?= $hasil['gaji']; ?></td>
                                     <td><?= $hasil['level']; ?></td>
                                     <td>
                                         <a class="btn btn-sm btn-warning" data-toggle="modal" data-target="#modal-form-<?php echo $hasil['id_user']; ?>">
@@ -195,9 +195,9 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="gaji_perjam" class="col-sm-2 col-form-label">Gaji Perjam</label>
+                                            <label for="gaji_karyawan" class="col-sm-2 col-form-label">Gaji</label>
                                             <div class="col-sm-10">
-                                                <input type="text" name="gaji_perjam" value="<?= $hasil['gaji_perjam']; ?>" class="form-control" id="gaji_perjam">
+                                                <input type="text" name="gaji" value="<?= $hasil['gaji']; ?>" class="form-control" id="gaji_karyawan">
                                             </div>
                                         </div>
                                         <center><button type="submit" name="edit_user" class="btn btn-primary">Edit</button></center>

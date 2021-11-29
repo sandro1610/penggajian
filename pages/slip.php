@@ -7,11 +7,11 @@
                     <div class="col-lg-8 pl-3">
                         <div class="row">
                             <div class="col-lg-2">
-                                <img class="logo-invoice" src="assets/img/logo.jpeg" alt="" srcset="">
+                                <img class="logo-invoice" src="assets/img/logo.png" alt="" srcset="">
                             </div>
                             <div class="col-lg-10 pt-4">
-                                <h4>PT MAHAPUTRA KARYA KONTRUKSINDO</h4>
-                                <h6>JL. Kol. H.Burlian No 108 Palembang</h6>
+                                <h4>STIE APRIN PALEMBANG</h4>
+                                <h6>Jalan Bala Dewa, Padang Selasa, Bukit Lama</h6>
                             </div>
                         </div>
                     </div>
@@ -67,18 +67,26 @@
                                                         ?></td>
                                 </tr>
                                 <tr>
-                                    <td>Tunjangan Operasional</td>
+                                    <td>Tunjangan</td>
                                     <td> : Rp </td>
                                     <td class="invoice"><?php
-                                                        $hasil_rupiah = number_format($hasil['makan'], 2, ',', '.');
+                                                        $hasil_rupiah = number_format($hasil['tunjangan_jabatan'], 2, ',', '.');
                                                         echo $hasil_rupiah;
                                                         ?></td>
                                 </tr>
                                 <tr>
-                                    <td>Uang Makan</td>
+                                    <td>Honor Mengejar</td>
                                     <td> : Rp </td>
                                     <td class="invoice"><?php
-                                                        $hasil_rupiah = number_format($hasil['makan'], 2, ',', '.');
+                                                        $hasil_rupiah = number_format($hasil['honor_ngajar'], 2, ',', '.');
+                                                        echo $hasil_rupiah;
+                                                        ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Honor Lainnya</td>
+                                    <td> : Rp </td>
+                                    <td class="invoice"><?php
+                                                        $hasil_rupiah = number_format($hasil['honor_lainnya'], 2, ',', '.');
                                                         echo $hasil_rupiah;
                                                         ?></td>
                                 </tr>
@@ -94,7 +102,7 @@
                                     <td>Total Penerimaan</td>
                                     <td> : Rp </td>
                                     <td class="invoice"><?php
-                                                        $total_penerimaan = $hasil['total_gaji'] + $hasil['makan'] + $hasil['makan'] + $hasil['transport'];
+                                                        $total_penerimaan = $hasil['total_gaji'] + $hasil['tunjangan_jabatan'] + $hasil['honor_ngajar'] + $hasil['honor_lainnya'] + $hasil['transport'];
                                                         $hasil_rupiah = number_format($total_penerimaan, 2, ',', '.');
                                                         echo $hasil_rupiah;
                                                         ?></td>
@@ -108,7 +116,7 @@
                                     <td>Gaji Bersih</td>
                                     <td> : Rp </td>
                                     <td class="invoice"><?php
-                                                        $total_bersih = ($hasil['total_gaji'] + $hasil['makan'] + $hasil['makan'] + $hasil['transport']) - ($hasil['pinjaman'] + $hasil['iuran']);
+                                                        $total_bersih = ($hasil['total_gaji'] + $hasil['tunjangan_jabatan'] + $hasil['honor_ngajar'] + $hasil['honor_lainnya'] + $hasil['transport']) - ($hasil['pinjaman'] + $hasil['iuran']);
                                                         $hasil_rupiah = number_format($total_bersih, 2, ',', '.');
                                                         echo $hasil_rupiah;
                                                         ?></td>

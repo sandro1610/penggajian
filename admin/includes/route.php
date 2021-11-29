@@ -24,10 +24,10 @@ if (isset($_POST['izinkan'])) {
             $update_gaji = mysqli_query($link, "UPDATE tb_gaji SET tb_gaji.total_gaji = tb_gaji.total_gaji + $total_gaji_hari WHERE tb_gaji.periode = $date AND tb_gaji.user_id = $user_id");
             if ($insert_absen && $update_gaji) {
                 echo "<script>alert('Data Successful Send');</script>";
-                // echo "<script>window.location='../?p=izin';</script>";
+                echo "<script>window.location='../?p=izin';</script>";
             } else {
                 echo "<script>alert('Data Failed to Save');</script>";
-                // echo "<script>window.location='../?p=izin';</script>";
+                echo "<script>window.location='../?p=izin';</script>";
             }
         } else if ($check == 1) {
             $update_absen = mysqli_query($link, "UPDATE `tb_absen` SET `datang` = '08:00:00', `pulang` = '17:00:00', `total_gaji_hari` = '$total_gaji_hari', `status` = '1' WHERE tanggal = '$tanggal_izin' AND user_id = '$user_id'");
@@ -57,11 +57,11 @@ if (isset($_POST['tidak_izinkan'])) {
 if (isset($_POST['edit_gaji'])) {
     $id_gaji = $_POST['id_gaji'];
     $pinjaman = $_POST['pinjaman'];
-    $makan = $_POST['makan'];
+    $tunjangan_jabatan = $_POST['tunjangan_jabatan'];
     $transport = $_POST['transport'];
     $iuran = $_POST['iuran'];
-    $operasional = $_POST['operasional'];
-    $sql = mysqli_query($link, "UPDATE `tb_gaji` SET `pinjaman` = '$pinjaman', `iuran` = '$iuran', `makan` = '$makan', `transport` = '$transport', `operasional` = '$operasional' WHERE id_gaji = $id_gaji");
+    $honor_ngajar = $_POST['honor_ngajar'];
+    $sql = mysqli_query($link, "UPDATE `tb_gaji` SET `pinjaman` = '$pinjaman', `iuran` = '$iuran', `tunjangan_jabatan` = '$tunjangan_jabatan', `transport` = '$transport', `honor_ngajar` = '$honor_ngajar' WHERE id_gaji = $id_gaji");
     if ($sql) {
         echo "<script>alert('Data Successful Send');</script>";
         echo "<script>window.location='../?p=gaji';</script>";

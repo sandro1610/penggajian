@@ -16,7 +16,7 @@ if (isset($_SESSION['level'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="assets/img/icon.png">
+    <link rel="icon" href="assets/img/logo.png">
     <title>STIE APRIN PALEMBANG</title>
     <!-- Bootstrap core CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -25,7 +25,7 @@ if (isset($_SESSION['level'])) {
 
 <body class="text-center">
     <form action="includes/ceklogin.php" method="POST" class="form-signin">
-        <img class="mb-4" src="assets/img/logo.jpeg" alt="" width="72" height="72">
+        <img class="mb-4" src="assets/img/logo.png" alt="" width="120" height="120">
         <h1 class="h3 mb-3 font-weight-normal">Absensi Karyawan</h1>
         <h3 class="h3 mb-3 font-weight-normal">Login</h3>
         <div class="form-group">

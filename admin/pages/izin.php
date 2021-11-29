@@ -100,10 +100,7 @@
                                         }
                                         ?></td>
                                     <td>
-                                        <a class="btn btn-sm btn-warning" data-toggle="modal" data-target="#modal-form-<?php echo $hasil['id_izin']; ?>">
-                                            <i class='fas fa-pencil-alt' style="color: white;"></i>
-                                        </a>
-                                        <a class="btn btn-sm btn-danger" href="javascript:hapusData_siswa('<?= $hasil['id_izin']; ?>')">
+                                        <a class="btn btn-sm btn-danger" href="javascript:hapusData_izin('<?= $hasil['id_izin']; ?>')">
                                             <i class='fas fa-trash' style="color: white;"></i>
                                         </a>
                                     </td>

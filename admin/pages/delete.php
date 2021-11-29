@@ -1,53 +1,67 @@
 <?php
 if (isset($_GET['q'])) {
-	$q = $_GET['q'];
-	switch ($q) {
-		case 'user':
-			if (isset($_GET['id'])) {
+    $q = $_GET['q'];
+    switch ($q) {
+        case 'user':
+            if (isset($_GET['id'])) {
                 $id     = $_GET['id'];
-                $sql    = "DELETE FROM tb_user WHERE id_user='".$id."'";
-                $query  = mysqli_query($link,$sql);
-                if($query){
+                $sql    = "DELETE FROM tb_user WHERE id_user='" . $id . "'";
+                $query  = mysqli_query($link, $sql);
+                if ($query) {
                     echo "<script>alert('Data Successfully Deleted');</script>";
                     echo "<script>window.location='?p=karyawan';</script>";
-                }else{
+                } else {
                     echo "<script>alert('Data Failed To Delete');</script>";
                     echo "<script>window.location='?p=karyawan';</script>";
                 }
             }
-			break;
-		case 'pembimbing':
-			if (isset($_GET['id'])) {
+            break;
+        case 'absen':
+            if (isset($_GET['id'])) {
                 $id     = $_GET['id'];
-                $sql    = "DELETE FROM tb_pembimbing WHERE id_pembimbing='".$id."'";
-                $query  = mysqli_query($link,$sql);
-                if($query){
+                $sql    = "DELETE FROM tb_absen WHERE id_absen='" . $id . "'";
+                $query  = mysqli_query($link, $sql);
+                if ($query) {
                     echo "<script>alert('Data Successfully Deleted');</script>";
-                    echo "<script>window.location='?p=pembimbing';</script>";
-                }else{
+                    echo "<script>window.location='?p=absen';</script>";
+                } else {
                     echo "<script>alert('Data Failed To Delete');</script>";
-                    echo "<script>window.location='?p=pembimbing';</script>";
+                    echo "<script>window.location='?p=absen';</script>";
                 }
             }
-			break;
-		case 'user':
-			if (isset($_GET['id'])) {
+            break;
+        case 'izin':
+            if (isset($_GET['id'])) {
                 $id     = $_GET['id'];
-                $sql    = "DELETE FROM tb_user WHERE id='".$id."'";
-                $query  = mysqli_query($link,$sql);
-                if($query){
+                $sql    = "DELETE FROM tb_izin WHERE id_izin='" . $id . "'";
+                $query  = mysqli_query($link, $sql);
+                if ($query) {
                     echo "<script>alert('Data Successfully Deleted');</script>";
-                    echo "<script>window.location='?p=dashboard';</script>";
-                }else{
+                    echo "<script>window.location='?p=izin';</script>";
+                } else {
                     echo "<script>alert('Data Failed To Delete');</script>";
-                    echo "<script>window.location='?p=dashboard';</script>";
+                    echo "<script>window.location='?p=izin';</script>";
                 }
             }
-			break;
-		default:
-			include $dir . 'blank.php';
-			break;
-	}
+            break;
+        case 'gaji':
+            if (isset($_GET['id'])) {
+                $id     = $_GET['id'];
+                $sql    = "DELETE FROM tb_gaji WHERE id_gaji='" . $id . "'";
+                $query  = mysqli_query($link, $sql);
+                if ($query) {
+                    echo "<script>alert('Data Successfully Deleted');</script>";
+                    echo "<script>window.location='?p=gaji';</script>";
+                } else {
+                    echo "<script>alert('Data Failed To Delete');</script>";
+                    echo "<script>window.location='?p=gaji';</script>";
+                }
+            }
+            break;
+        default:
+            include $dir . 'blank.php';
+            break;
+    }
 } else {
-	include $dir . 'dashboard.php';
+    include $dir . 'dashboard.php';
 }
