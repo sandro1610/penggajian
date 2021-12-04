@@ -10,9 +10,9 @@ if (isset($_POST['absen'])) {
     $sql = mysqli_query($link, "INSERT INTO `tb_absen` (`id_absen`, `user_id`, `tanggal`, `datang`) VALUES (NULL, '$id_user', '$tanggal', '$jam')");
     $sql1 = mysqli_query($link, "SELECT * FROM tb_user WHERE id_user = '$id_user'");
     $result = mysqli_fetch_array($sql1);
-    $transport = $result['transport'];
+    $transport = $result['transport_hari'];
     $gaji = $result['gaji'];
-    $periode = date('m');
+    $periode = date('Y-m-d',mktime(0,0,0,date('m')+1,8, date('Y')));
     $sql = "SELECT * FROM tb_gaji WHERE periode = '$periode' AND user_id = '$id_user'";
     $query = mysqli_query($link, $sql);
     $hasil = mysqli_fetch_array($query);

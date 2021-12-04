@@ -10,6 +10,7 @@
                     <table class="table" id="gaji" class="display" cellspacing="0" width="100%">
                         <thead class="table-dark">
                             <tr>
+                                <th>Action</th>
                                 <th>Detail</th>
                                 <th>Periode</th>
                                 <th>Nama</th>
@@ -23,7 +24,6 @@
                                 <th>Honor Lainnya</th>
                                 <th>Total Gaji</th>
                                 <th>Gaji Bersih</th>
-                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -35,7 +35,74 @@
                             $query = mysqli_query($link, $sql);
                             while ($hasil = mysqli_fetch_array($query)) :
                             ?>
-                                <tr>
+                                <tr> 
+                                    <td>
+                                        <a class="btn btn-sm btn-warning" data-toggle="modal" data-target="#modal-form-<?php echo $hasil['id_gaji']; ?>">
+                                            <i class='fas fa-pencil-alt' style="color: white;"></i>
+                                        </a>
+                                        <!-- Modal Edit-->
+                                        <div class="modal fade" id="modal-form-<?php echo $hasil['id_gaji']; ?>" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+                                            <div class="modal-dialog modal- modal-dialog-centered modal-lg" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title" id="modal-title-default">Edit Gaji</h4>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">×</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body p-0">
+                                                        <div class="card bg-secondary shadow border-0">
+                                                            <div class="card-body px-lg-5 py-lg-5">
+                                                                <form action="includes/route.php" method="POST">
+                                                                    <input type="text" name="id_gaji" hidden value="<?= $hasil['id_gaji']; ?>" id="">
+                                                                    <div class="form-group row">
+                                                                        <label for="nama" class="col-sm-2 col-form-label">Pinjaman</label>
+                                                                        <div class="col-sm-10">
+                                                                            <input type="text" name="pinjaman" value="<?= $hasil['pinjaman']; ?>" class="form-control" id="nama">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="nama" class="col-sm-2 col-form-label">Iuran</label>
+                                                                        <div class="col-sm-10">
+                                                                            <input type="text" name="iuran" value="<?= $hasil['iuran']; ?>" class="form-control" id="nama">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="nama" class="col-sm-2 col-form-label">Tunjangan Jabatan</label>
+                                                                        <div class="col-sm-10">
+                                                                            <input type="text" name="tunjangan_jabatan" value="<?= $hasil['tunjangan_jabatan']; ?>" class="form-control" id="nama">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="nama" class="col-sm-2 col-form-label">Transport</label>
+                                                                        <div class="col-sm-10">
+                                                                            <input type="text" name="transport" value="<?= $hasil['transport']; ?>" class="form-control" id="nama">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="nama" class="col-sm-2 col-form-label">Honor Ngajar</label>
+                                                                        <div class="col-sm-10">
+                                                                            <input type="text" name="honor_ngajar" value="<?= $hasil['honor_ngajar']; ?>" class="form-control" id="nama">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="nama" class="col-sm-2 col-form-label">Honor Lainnya</label>
+                                                                        <div class="col-sm-10">
+                                                                            <input type="text" name="honor_lainnya" value="<?= $hasil['honor_lainnya']; ?>" class="form-control" id="nama">
+                                                                        </div>
+                                                                    </div>
+                                                                    <center><button type="submit" name="edit_gaji" class="btn btn-primary">Edit</button></center>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a class="btn btn-sm btn-danger" href="javascript:hapusData_gaji('<?= $hasil['id_gaji']; ?>')">
+                                            <i class='fas fa-trash' style="color: white;"></i>
+                                        </a>
+                                    </td>
                                     <td>
                                         <a href="#" type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal<?php echo $hasil['id_gaji']; ?>">Detail</a>
                                         <!-- Modal -->
@@ -134,7 +201,7 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td><?php echo date("d F Y", mktime(0, 0, 0, $hasil['periode'] + 1, 1, date('Y'))); ?></td>
+                                    <td><?= $hasil['periode']; ?></td>
                                     <td><?= $hasil['nama']; ?></td>
                                     <td><?= $hasil['jabatan']; ?></td>
                                     <td><?= $hasil['no_rek']; ?></td>
@@ -148,73 +215,7 @@
                                     <td><?php
                                         $total_bersih = ($hasil['total_gaji'] + $hasil['tunjangan_jabatan'] + $hasil['honor_ngajar'] + $hasil['honor_lainnya'] + $hasil['transport']) - ($hasil['pinjaman'] + $hasil['iuran']);
                                         echo $total_bersih; ?></td>
-                                    <td>
-                                        <a class="btn btn-sm btn-warning" data-toggle="modal" data-target="#modal-form-<?php echo $hasil['id_gaji']; ?>">
-                                            <i class='fas fa-pencil-alt' style="color: white;"></i>
-                                        </a>
-                                        <!-- Modal Edit-->
-                                        <div class="modal fade" id="modal-form-<?php echo $hasil['id_gaji']; ?>" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
-                                            <div class="modal-dialog modal- modal-dialog-centered modal-lg" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h4 class="modal-title" id="modal-title-default">Edit Gaji</h4>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">×</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body p-0">
-                                                        <div class="card bg-secondary shadow border-0">
-                                                            <div class="card-body px-lg-5 py-lg-5">
-                                                                <form action="includes/route.php" method="POST">
-                                                                    <input type="text" name="id_gaji" hidden value="<?= $hasil['id_gaji']; ?>" id="">
-                                                                    <div class="form-group row">
-                                                                        <label for="nama" class="col-sm-2 col-form-label">Pinjaman</label>
-                                                                        <div class="col-sm-10">
-                                                                            <input type="text" name="pinjaman" value="<?= $hasil['pinjaman']; ?>" class="form-control" id="nama">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group row">
-                                                                        <label for="nama" class="col-sm-2 col-form-label">Iuran</label>
-                                                                        <div class="col-sm-10">
-                                                                            <input type="text" name="iuran" value="<?= $hasil['iuran']; ?>" class="form-control" id="nama">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group row">
-                                                                        <label for="nama" class="col-sm-2 col-form-label">Tunjangan Jabatan</label>
-                                                                        <div class="col-sm-10">
-                                                                            <input type="text" name="tunjangan_jabatan" value="<?= $hasil['tunjangan_jabatan']; ?>" class="form-control" id="nama">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group row">
-                                                                        <label for="nama" class="col-sm-2 col-form-label">Transport</label>
-                                                                        <div class="col-sm-10">
-                                                                            <input type="text" name="transport" value="<?= $hasil['transport']; ?>" class="form-control" id="nama">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group row">
-                                                                        <label for="nama" class="col-sm-2 col-form-label">Honor Ngajar</label>
-                                                                        <div class="col-sm-10">
-                                                                            <input type="text" name="honor_ngajar" value="<?= $hasil['honor_ngajar']; ?>" class="form-control" id="nama">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group row">
-                                                                        <label for="nama" class="col-sm-2 col-form-label">Honor Lainnya</label>
-                                                                        <div class="col-sm-10">
-                                                                            <input type="text" name="honor_lainnya" value="<?= $hasil['honor_lainnya']; ?>" class="form-control" id="nama">
-                                                                        </div>
-                                                                    </div>
-                                                                    <center><button type="submit" name="edit_gaji" class="btn btn-primary">Edit</button></center>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <a class="btn btn-sm btn-danger" href="javascript:hapusData_gaji('<?= $hasil['id_gaji']; ?>')">
-                                            <i class='fas fa-trash' style="color: white;"></i>
-                                        </a>
-                                    </td>
+                                   
                                 </tr>
                             <?php endwhile ?>
                         </tbody>

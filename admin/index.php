@@ -133,7 +133,11 @@ if (empty($_SESSION['email']) && empty($_SESSION['password']) && empty($_SESSION
   </script>
   <script type="text/javascript">
     $(document).ready(function() {
-      $('#gaji').DataTable();
+      $('#gaji').DataTable({
+        "order": [
+          [2, "desc"]
+        ]
+      });
     });
   </script>
   <script type="text/javascript">
