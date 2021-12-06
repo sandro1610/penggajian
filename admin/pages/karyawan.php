@@ -11,7 +11,6 @@
                         <div class="d-flex justify-content-end">
                             <a href="../registrasi.php" type="button" class="btn btn-warning btn-mb">Tambah User</a>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -157,7 +156,7 @@
                             <div class="card bg-secondary shadow border-0">
                                 <div class="card-body px-lg-5 py-lg-5">
                                     <form method="POST" action="includes/route.php">
-                                    <input type="text" name="id_user" hidden value="<?= $hasil['id_user']; ?>" id="">
+                                        <input type="text" name="id_user" hidden value="<?= $hasil['id_user']; ?>" id="">
                                         <div class="form-group row">
                                             <label for="nama" class="col-sm-2 col-form-label">Nama</label>
                                             <div class="col-sm-10">

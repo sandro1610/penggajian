@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2021 at 05:32 PM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 7.4.16
+-- Generation Time: Dec 04, 2021 at 07:18 AM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 7.4.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -51,7 +51,11 @@ INSERT INTO `tb_absen` (`id_absen`, `user_id`, `tanggal`, `datang`, `transport`,
 (15, 3, '2021-09-23', '18:37:53', 0, 0),
 (16, 2, '2021-11-24', '08:50:24', 0, 1),
 (23, 2, '2021-11-27', '13:45:20', 25000, 1),
-(24, 3, '2021-11-27', '14:33:04', 30000, 1);
+(24, 3, '2021-11-27', '14:33:04', 30000, 1),
+(25, 2, '2021-11-30', '15:37:05', 25000, 1),
+(26, 2, '2021-12-03', '10:57:36', 25000, 1),
+(27, 2, '2021-12-04', '08:55:19', 25000, 1),
+(30, 7, '2021-12-04', '13:02:46', 20000, 1);
 
 -- --------------------------------------------------------
 
@@ -69,7 +73,7 @@ CREATE TABLE `tb_gaji` (
   `honor_ngajar` int(11) NOT NULL,
   `honor_lainnya` int(11) NOT NULL DEFAULT 0,
   `total_gaji` int(11) NOT NULL,
-  `periode` int(11) NOT NULL
+  `periode` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -77,12 +81,14 @@ CREATE TABLE `tb_gaji` (
 --
 
 INSERT INTO `tb_gaji` (`id_gaji`, `user_id`, `pinjaman`, `iuran`, `tunjangan_jabatan`, `transport`, `honor_ngajar`, `honor_lainnya`, `total_gaji`, `periode`) VALUES
-(2, 2, 100000, 20000, 200000, 0, 0, 0, 675000, 7),
-(3, 4, 0, 0, 0, 0, 0, 0, 243000, 7),
-(4, 8, 0, 0, 0, 0, 0, 0, 0, 9),
-(5, 3, 0, 0, 0, 0, 0, 0, 0, 9),
-(9, 2, 0, 0, 200000, 25000, 0, 0, 1750000, 11),
-(10, 3, 0, 0, 0, 30000, 0, 0, 1750000, 11);
+(2, 2, 100000, 20000, 200000, 0, 0, 0, 675000, '0000-00-00'),
+(3, 4, 0, 0, 0, 0, 0, 0, 243000, '0000-00-00'),
+(4, 8, 0, 0, 0, 0, 0, 0, 0, '0000-00-00'),
+(5, 3, 0, 0, 0, 0, 0, 0, 0, '0000-00-00'),
+(9, 2, 0, 0, 200000, 50000, 0, 0, 1750000, '0000-00-00'),
+(10, 3, 0, 0, 0, 30000, 0, 0, 1750000, '0000-00-00'),
+(11, 2, 0, 0, 0, 50000, 0, 0, 1750000, '2022-01-01'),
+(14, 7, 0, 0, 0, 20000, 0, 0, 1000000, '2022-01-08');
 
 -- --------------------------------------------------------
 
@@ -123,7 +129,7 @@ CREATE TABLE `tb_user` (
   `no_rek` varchar(17) NOT NULL,
   `jabatan` varchar(20) NOT NULL,
   `tgl_masuk` date DEFAULT NULL,
-  `transport` int(11) NOT NULL,
+  `transport_hari` int(11) NOT NULL,
   `gaji` int(11) NOT NULL,
   `level` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -132,7 +138,7 @@ CREATE TABLE `tb_user` (
 -- Dumping data for table `tb_user`
 --
 
-INSERT INTO `tb_user` (`id_user`, `email`, `password`, `nama`, `alamat`, `no_rek`, `jabatan`, `tgl_masuk`, `transport`, `gaji`, `level`) VALUES
+INSERT INTO `tb_user` (`id_user`, `email`, `password`, `nama`, `alamat`, `no_rek`, `jabatan`, `tgl_masuk`, `transport_hari`, `gaji`, `level`) VALUES
 (1, 'wahyu@gmail.com', '$2y$10$A/z/xrp5dk5PPNt4GTrEb.W10QIySKD.jxk3oZBvKKYAiikiVSp7W', 'Wahyu Akbar', 'Jalan Sama Kamu', '231322191', 'Manager', '2021-01-18', 100000, 1750000, 'Admin'),
 (2, 'mikhaelsandro82@gmail.com', '$2y$10$8tGZjmb0tp7TmK8yYtCPXur8hY39/wiN95nTYoXkQ4yiVD3whpmIW', 'Mikhael Sandro', 'Jalan Pelita Kencana', '443322321', 'Staf Keuangan', '2021-02-18', 25000, 1750000, 'User'),
 (3, 'hafiz@gmail.com', '$2y$10$i3v5gaFgWZfCxw9DZeAgqOOARLkT9jw.2kleNmj1.ppstS/tRz.fW', 'Hafiz Ibrahim', 'Jalan Harapan Abadi', '99098098098', 'Staf Agensi', '2021-02-18', 30000, 1750000, 'User'),
@@ -178,13 +184,13 @@ ALTER TABLE `tb_user`
 -- AUTO_INCREMENT for table `tb_absen`
 --
 ALTER TABLE `tb_absen`
-  MODIFY `id_absen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id_absen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `tb_gaji`
 --
 ALTER TABLE `tb_gaji`
-  MODIFY `id_gaji` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_gaji` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `tb_izin`

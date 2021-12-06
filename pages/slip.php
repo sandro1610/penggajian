@@ -4,10 +4,12 @@
         <div class="d-flex justify-content-center">
             <div class="col-lg-12">
                 <form class="pt-3" method="post">
+                    <div class="d-flex justify-content-center">
+                        <h4 class="">Pilih Periode Gaji</p>
+                    </div>
                     <div class="row text-dark">
                         <div class="col-lg-6">
-                            <select class="form-control text-dark" name="bulan">
-                                <option selected disabled>Pilih Bulan</option>
+                            <select required class="form-control text-dark" name="bulan">
                                 <option value="01">Januari</option>
                                 <option value="02">Februari</option>
                                 <option value="03">Maret</option>
@@ -23,10 +25,10 @@
                             </select>
                         </div>
                         <div class="col-lg-6">
-                            <select class="form-control text-dark" name='tahun'>
-                                <option selected disabled>Pilih Tahun</option>
+                            <select required class="form-control text-dark" name='tahun'>
                                 <?php
-                                $qry = mysqli_query($link, "SELECT periode FROM tb_gaji GROUP BY year(periode) order by periode desc");
+                                $id_user = $_SESSION['id_user'];
+                                $qry = mysqli_query($link, "SELECT periode FROM tb_gaji WHERE user_id = $id_user  GROUP BY year(periode) order by periode desc");
                                 while ($t = mysqli_Fetch_array($qry)) {
                                     $data = explode('-', $t['periode']);
                                     $tahun = $data[0];
@@ -52,7 +54,6 @@
                     </div>
                     <?php
                     if (isset($_POST['cek'])) {
-                        $id_user = $_SESSION['id_user'];
                         $bulan = $_POST['bulan'];
                         $tahun = $_POST['tahun'];
                         $sql = "SELECT * FROM tb_gaji
