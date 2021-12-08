@@ -13,8 +13,8 @@ if(isset($_POST["submit"])){
   $no_rek = $_POST['no_rek'];
   $tgl_masuk = $_POST['tgl_masuk'];
   $level = "User";
-  $gaji_perjam = $_POST['gaji_perjam'];
-  $sql = mysqli_query($link,"INSERT INTO `tb_user` (`id_user`, `email`, `password`, `nama`, `alamat`, `jabatan`, `no_rek`, `tgl_masuk`, `level`, `gaji_perjam`) VALUES (NULL, '$email', '$password', '$nama', '$alamat', '$jabatan', '$no_rek', '$tgl_masuk', '$level', '$gaji_perjam')");
+  $gaji = $_POST['gaji'];
+  $sql = mysqli_query($link,"INSERT INTO `tb_user` (`id_user`, `email`, `password`, `nama`, `alamat`, `jabatan`, `no_rek`, `tgl_masuk`, `level`, `gaji`) VALUES (NULL, '$email', '$password', '$nama', '$alamat', '$jabatan', '$no_rek', '$tgl_masuk', '$level', '$gaji')");
   if ($sql) {
     echo "<script>alert('Account Successfully Registered');</script>";
     echo "<script>window.location='admin/index.php';</script>";
@@ -70,7 +70,7 @@ if(isset($_POST["submit"])){
         </div>
         <br>
         <div class="form-group">
-            <input type="text" id="gaji_perjam" class="form-control" name="gaji_perjam" placeholder="Gaji perjam" required>
+            <input type="text" id="gaji" class="form-control" name="gaji" placeholder="Gaji perjam" required>
         </div>
         <br>
         <button class="btn btn-lg btn-primary btn-block" name="submit" type="submit">Tambah</button>

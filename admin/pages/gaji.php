@@ -2,14 +2,14 @@
     <!-- Card header -->
     <div class="card-header">
         <div class="row">
-            <div class="col-lg-9">
+            <div class="col-lg-8">
                 <h3 class="mb-0">Data Gaji</h3>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-4">
                 <div class="d-flex justify-content-end">
                     <form action="includes/export.php" method="post">
                         <div class="row text-dark">
-                            <div class="col-lg-4">
+                            <div class="col-lg-5">
                                 <select required class="form-control text-dark" name="bulan">
                                     <option value="01">Januari</option>
                                     <option value="02">Februari</option>
@@ -38,7 +38,7 @@
                                     ?>
                                 </select>
                             </div>
-                            <div class="col-lg-4">
+                            <div class="col-lg-3">
                                 <button class="btn btn-sm-1 btn-success" name="cek" type="submit">Print</button>
                             </div>
                         </div>
