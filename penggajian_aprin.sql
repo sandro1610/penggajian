@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 04, 2021 at 07:18 AM
+-- Generation Time: Dec 08, 2021 at 03:43 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.25
 
@@ -41,21 +41,7 @@ CREATE TABLE `tb_absen` (
 --
 
 INSERT INTO `tb_absen` (`id_absen`, `user_id`, `tanggal`, `datang`, `transport`, `status`) VALUES
-(2, 3, '2021-07-18', '19:20:58', 0, 1),
-(6, 3, '2021-07-19', '08:00:00', 270000, 1),
-(7, 2, '2021-07-18', '08:00:00', 225000, 1),
-(8, 4, '2021-07-18', '08:00:00', 243000, 1),
-(11, 2, '2021-07-26', '23:28:31', 0, 1),
-(13, 8, '2021-09-14', '09:44:01', 0, 1),
-(14, 3, '2021-09-14', '09:44:35', 0, 1),
-(15, 3, '2021-09-23', '18:37:53', 0, 0),
-(16, 2, '2021-11-24', '08:50:24', 0, 1),
-(23, 2, '2021-11-27', '13:45:20', 25000, 1),
-(24, 3, '2021-11-27', '14:33:04', 30000, 1),
-(25, 2, '2021-11-30', '15:37:05', 25000, 1),
-(26, 2, '2021-12-03', '10:57:36', 25000, 1),
-(27, 2, '2021-12-04', '08:55:19', 25000, 1),
-(30, 7, '2021-12-04', '13:02:46', 20000, 1);
+(1, 10, '2021-12-08', '09:23:02', 10000, 1);
 
 -- --------------------------------------------------------
 
@@ -81,14 +67,7 @@ CREATE TABLE `tb_gaji` (
 --
 
 INSERT INTO `tb_gaji` (`id_gaji`, `user_id`, `pinjaman`, `iuran`, `tunjangan_jabatan`, `transport`, `honor_ngajar`, `honor_lainnya`, `total_gaji`, `periode`) VALUES
-(2, 2, 100000, 20000, 200000, 0, 0, 0, 675000, '0000-00-00'),
-(3, 4, 0, 0, 0, 0, 0, 0, 243000, '0000-00-00'),
-(4, 8, 0, 0, 0, 0, 0, 0, 0, '0000-00-00'),
-(5, 3, 0, 0, 0, 0, 0, 0, 0, '0000-00-00'),
-(9, 2, 0, 0, 200000, 50000, 0, 0, 1750000, '0000-00-00'),
-(10, 3, 0, 0, 0, 30000, 0, 0, 1750000, '0000-00-00'),
-(11, 2, 0, 0, 0, 50000, 0, 0, 1750000, '2022-01-01'),
-(14, 7, 0, 0, 0, 20000, 0, 0, 1000000, '2022-01-08');
+(1, 10, 0, 0, 0, 10000, 0, 0, 1200000, '2022-01-08');
 
 -- --------------------------------------------------------
 
@@ -103,16 +82,6 @@ CREATE TABLE `tb_izin` (
   `keterangan` text NOT NULL,
   `status` varchar(30) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tb_izin`
---
-
-INSERT INTO `tb_izin` (`id_izin`, `user_id`, `tanggal`, `keterangan`, `status`) VALUES
-(2, 3, '2021-07-19', 'Mudik', '2'),
-(3, 2, '2021-07-18', 'Makan', '2'),
-(5, 4, '2021-07-18', 'Masuk', '2'),
-(6, 2, '2021-07-29', 'Mudik', '2');
 
 -- --------------------------------------------------------
 
@@ -129,7 +98,7 @@ CREATE TABLE `tb_user` (
   `no_rek` varchar(17) NOT NULL,
   `jabatan` varchar(20) NOT NULL,
   `tgl_masuk` date DEFAULT NULL,
-  `transport_hari` int(11) NOT NULL,
+  `transport_hari` int(11) NOT NULL DEFAULT 10000,
   `gaji` int(11) NOT NULL,
   `level` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -139,14 +108,16 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id_user`, `email`, `password`, `nama`, `alamat`, `no_rek`, `jabatan`, `tgl_masuk`, `transport_hari`, `gaji`, `level`) VALUES
-(1, 'wahyu@gmail.com', '$2y$10$A/z/xrp5dk5PPNt4GTrEb.W10QIySKD.jxk3oZBvKKYAiikiVSp7W', 'Wahyu Akbar', 'Jalan Sama Kamu', '231322191', 'Manager', '2021-01-18', 100000, 1750000, 'Admin'),
-(2, 'mikhaelsandro82@gmail.com', '$2y$10$8tGZjmb0tp7TmK8yYtCPXur8hY39/wiN95nTYoXkQ4yiVD3whpmIW', 'Mikhael Sandro', 'Jalan Pelita Kencana', '443322321', 'Staf Keuangan', '2021-02-18', 25000, 1750000, 'User'),
-(3, 'hafiz@gmail.com', '$2y$10$i3v5gaFgWZfCxw9DZeAgqOOARLkT9jw.2kleNmj1.ppstS/tRz.fW', 'Hafiz Ibrahim', 'Jalan Harapan Abadi', '99098098098', 'Staf Agensi', '2021-02-18', 30000, 1750000, 'User'),
-(5, 'rizkioktalia@gmail.com', '$2y$10$/7Y71sXu9Ps3N3JGKgWOdO5zCEVTpteaMR9b/UG.F7CD2VI4QjZ0C', 'Rizki Oktalia', 'JL.RAMA 8 RT.003/001 NO.43 PALEMBANG', '0809283443', 'Administrasi', '2020-06-17', 25000, 2000000, 'User'),
-(6, 'DWIIKAANGGRAINI@gmail.com', '$2y$10$EbeOGj/VHxPkgIsBlmDLKOU41/Dg9nJq4wPmpjm8ZIcA5oh4qcRFi', 'DWI IKA ANGGRAINI', 'KOMP.MEGA ASRI BLOK A3 PALEMBANG', '12943324484922', 'KEUANGAN', '2019-06-20', 30000, 2300000, 'User'),
-(7, 'RESIJATRI@gmail.com', '$2y$10$G7X/PEVcHvfuCmTePUQN..w9AqD5tr9E8zhSKAHQU20zer8kLrViK', 'RESI  JATRI', 'KOMP.PEMDA BLOK 34 PALEMBANG', '433482821', 'Administrasi', '2021-09-13', 20000, 1000000, 'User'),
-(10, 'TOMJAKA@gmail.com', '$2y$10$mhpANPk7rTskSgz3eHCpd.J7n2N8qqujozEsxkVD8YV5IrxhkxP7e', 'TOM JAKA', 'KOMP.MULTIWAHANA SAKO PALEMBANG', '4543532342', 'MARKETING', '2020-06-14', 30000, 2300000, 'User'),
-(11, 'IDILFITRISYAH@gmail.com', '$2y$10$pKLno5fRCb9s0xWG1cT8N.62Oz88QZ3orFjujcN.sdQ75JQQMNfKq', 'IDIL FITRISYAH', 'KOMP.BOSTER BLOK 23 PALEMBANG', '90909890', 'SIPIL', '2020-05-05', 35000, 1400000, 'User');
+(1, 'mikhaelsandro82@gmail.com', '$2y$10$/M2XlJQyLXSEA4Y3jsS1K.R/a2dRZmX1EmKehYcYHGT.0ZOVCwjxS', 'Mikhael Sandro', 'Perumahan Bukit Sejahtera Blok BS No.3', '0809283443', 'Staff IT', '2021-11-25', 10000, 1200000, 'Admin'),
+(2, 'kurniarizkiki@gmail.com', '$2y$10$TPeBjXzJyGfPOal277R/x.GSmPSLqDAmw7MoBiG5C.C3WAFaH.NNe', 'Kurnia Rizkiki, A.Md', 'JL.Silaberanti No. 768 Palembang', '112-00-1671966-3', 'PU Pasca Sarjana', '2021-11-24', 10000, 1200000, 'User'),
+(3, 'aldiseptian@gmail.com', '$2y$10$u6vgyF/gt5UKRu8b8UCLO.YPoGpzbu1zjER3WXqltoXzVVBPt0GUq', 'Aldi Pratama', 'KOMP.BOSTER BLOK 23 PALEMBANG', '113-00-1579531-7', 'Staff PDPT S1', '2021-11-24', 10000, 1200000, 'User'),
+(4, 'nozylianty@gmail.com', '$2y$10$obG7.H37/WmSGGJKJrqLI.hXBuPUIxwxXkqaxPJpB5poO2wObAJt2', 'Nozylianty', 'Perumahan Jaya Raya Indonesia Blok C No.12', '112-00-1812689-1', 'Dosen', '2021-11-24', 10000, 1700000, 'User'),
+(5, 'alisadikin@gmail.com', '$2y$10$ccDX2oDrwv62V.OS1uk/i.oDVAm6lSpF1TlRrHCZv82vVInSpxPlK', 'Dr. Drs. Ali Sadikin., M.Si', 'KOMP.MEGA ASRI BLOK A3 PALEMBANG', '0809283443', 'Dosen', '2021-11-24', 10000, 2100000, 'User'),
+(6, 'zulkipli@gmail.com', '$2y$10$9GQoF600jSHmfUqZnK0UFuEu19M7GcrlwGOXY5VeCCo9Bf7lMS/9W', 'Dr. Zukipli Djamin,MM', 'JL.RAMA 8 RT.003/001 NO.43 PALEMBANG', '4543532342', 'Dosen', '2021-11-30', 10000, 2100000, 'User'),
+(7, 'hendri@gmail.com', '$2y$10$ywd5.PZ/dcn7s7.fSglSLOyqa37k.Z2PIIB.wapn.5wn8wmierh.C', 'Dr. Hendri Wijaya., SE.,M.Si', 'Perumahan Bukit Sejahtera Blok BS No.3', '0809283443', 'Dosen', '2021-11-16', 10000, 1700000, 'User'),
+(8, 'jafrizal@gmail.com', '$2y$10$I80eiQ9eZXcHDyiQfCiEaOTMEVBMUno5VYyvmrd2KfUgIuAc3wWSO', 'Dr. Jafrizal., MM', 'JL.RIMBA KEMUNING NO.3456 PALEMBANG', '113-00-1565953-9', 'Dosen', '2021-11-16', 10000, 1700000, 'User'),
+(9, 'saiful@gmail.com', '$2y$10$.EL9XpkfIlPgYol8mpMaWePvBVuEyhCVaTGWvrKllBkZRZMjkCvka', 'Saiful', 'KOMP.MEGA ASRI BLOK A3 PALEMBANG', '0809283443', 'Officeboy', '2021-11-24', 10000, 1000000, 'User'),
+(10, 'msandro1610@gmail.com', '$2y$10$/aO8ZqYP3vREwS4NuFqRWuALjxe22RFghAhz1s6cSouJZFglk3bTW', 'Mikhael Sandro', 'Perumahan Bukit Sejahtera Blok BS No.3', '0809283443', 'Staff IT', '2021-11-24', 10000, 1200000, 'User');
 
 --
 -- Indexes for dumped tables
@@ -184,25 +155,25 @@ ALTER TABLE `tb_user`
 -- AUTO_INCREMENT for table `tb_absen`
 --
 ALTER TABLE `tb_absen`
-  MODIFY `id_absen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id_absen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tb_gaji`
 --
 ALTER TABLE `tb_gaji`
-  MODIFY `id_gaji` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_gaji` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tb_izin`
 --
 ALTER TABLE `tb_izin`
-  MODIFY `id_izin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_izin` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
